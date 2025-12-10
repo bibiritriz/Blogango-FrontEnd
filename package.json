@@ -43,8 +43,10 @@
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^9.1.7",
@@ -55,12 +57,13 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "typescript": "~5.9.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
+      "prettier --write",
+      "eslint --fix"
     ]
   }
 }
