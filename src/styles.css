@@ -1,1 +1,203 @@
-/* You can add global styles to this file, and also import other style files */
+/*Variáveis*/
+:root{
+
+  /*Familia de fontes*/
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  --font-mono: Menlo, Consolas, "Courier New", monospace;
+
+  /*Cores padrões*/
+  --color-default-white: #FFF;
+  --color-default-black: #001E2B;
+
+  /*Cinza*/
+  --color-gray-dark4: #112733;
+  --color-gray-dark3: #1C2D38;
+  --color-gray-dark2: #3D4F58;
+  --color-gray-dark1: #5C6C75;
+  --color-gray-base: #889397;
+  --color-gray-light1: #C1C7C6;
+  --color-gray-light2: #E8EDEB;
+  --color-gray-light3: #F9FBFA;
+
+  /*Verde*/
+  --color-green-dark3: #023430;
+  --color-green-dark2: #00684A;
+  --color-green-dark1: #00A35C;
+  --color-green-base: #00ED64;
+  --color-green-light1: #71F6BA;
+  --color-green-light2: #C0FAE6;
+  --color-green-light3: #E3FCF7;
+
+  /*Roxo*/
+  --color-purple-dark3: #2D0B59;
+  --color-purple-dark2: #5E0C9E;
+  --color-purple-base: #B45AF2;
+  --color-purple-light2: #F1D4FD;
+  --color-purple-light3: #F9EBFF;
+
+  /*Azul*/
+  --color-blue-dark3: #0C2657;
+  --color-blue-dark2: #083C90;
+  --color-blue-dark1: #1254B7;
+  --color-blue-base: #016BF8;
+  --color-blue-light1: #0498EC;
+  --color-blue-light2: #C3E7FE;
+  --color-blue-light3: #E1F7FF;
+
+  /*Amarelo*/
+  --color-yellow-dark3: #4C2100;
+  --color-yellow-dark2: #944F01;
+  --color-yellow-base: #FFC010;
+  --color-yellow-light2: #FFEC9E;
+  --color-yellow-light3: #FEF7DB;
+
+  /*Vermelho*/
+  --color-red-dark3: #5B0000;
+  --color-red-dark2: #970606;
+  --color-red-base: #DB3030;
+  --color-red-light1: #FF6960;
+  --color-red-light2: #FFCDC7;
+  --color-red-light3: #FFEAE5;
+
+  /*Espaçamento*/
+  --spacing-0: 0rem;      /* 0px */
+  --spacing-1: 0.125rem;  /* 2px */
+  --spacing-2: 0.5rem;    /* 8px */
+  --spacing-3: 1rem;      /* 16px */
+  --spacing-4: 1.5rem;    /* 24px */
+  --spacing-5: 2rem;      /* 32px */
+  --spacing-6: 2.5rem;    /* 40px */
+  --spacing-7: 3rem;      /* 48px */
+  --spacing-8: 3.5rem;    /* 56px */
+  --spacing-9: 4rem;      /* 64px */
+  --spacing-10: 5rem;     /* 80px */
+}
+
+/*Configurações */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-default-white, #fff);
+  color: var(--color-default-black, #111);
+  min-height: 100vh;
+}
+
+/* Headings */
+.h1 {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.h2 {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.h3 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+/* Subtitle */
+.subtitle {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Body */
+.body-2-bold {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.body-2 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 0.9375rem;
+}
+
+.body-1-bold {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.body-1 {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 0.8125rem;
+}
+
+/* Overline */
+.overline {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+/* Disclaimer */
+.disclaimer {
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 400;
+  font-size: 0.625rem;
+  letter-spacing: 0.2px;
+}
+
+
+@media (min-width: 768px) {
+
+  .h1 {
+    font-size: 3rem;
+  }
+
+  .h2 {
+    font-size: 2rem;
+  }
+
+  .h3 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+  }
+
+  .body-2,
+  .body-2-bold {
+    font-size: 1rem;
+  }
+
+  .body-1,
+  .body-1-bold {
+    font-size: 0.8125rem;
+  }
+
+  .overline {
+    font-size: 0.75rem;
+  }
+
+  .disclaimer {
+    font-size: 0.6875rem;
+  }
+}
