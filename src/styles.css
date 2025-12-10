@@ -2,6 +2,8 @@
 
 /*Variáveis*/
 :root{
+  /*Tamanhos*/
+  --header-height: 85px;
 
   /*Familia de fontes*/
   --font-serif: Georgia, "Times New Roman", serif;
