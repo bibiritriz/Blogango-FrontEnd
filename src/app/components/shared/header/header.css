@@ -1,0 +1,9 @@
+.header{
+  background-color: var(--color-green-dark3);
+  height: var(--header-height);
+  padding-left: var(--spacing-3);
+  img{
+    width: 174px;
+    height: 53px;
+  }
+}
