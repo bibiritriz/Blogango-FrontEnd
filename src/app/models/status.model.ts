@@ -1,0 +1,5 @@
+export enum StatusPost {
+  RASCUNHO = 'RASCUNHO',
+  PUBLICADO = 'PUBLICADO',
+  ARQUIVADO = 'ARQUIVADO',
+}
