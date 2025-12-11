@@ -9,7 +9,7 @@ import { Comentario, ComentarioUpdateDTO } from '../../models/comentario.model';
 export class ComentarioService {
   private readonly http = inject(HttpClient);
 
-  private readonly url = 'localhost:8080/api/comentarios';
+  private readonly url = 'http://localhost:8080/api/comentarios';
 
   public obterComentario(comentarioId: string): Observable<Comentario[]> {
     return this.http.get<Comentario[]>(`${this.url}/${comentarioId}`);
