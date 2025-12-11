@@ -15,5 +15,5 @@ export interface ComentarioUpdateDTO {
 }
 
 export interface ComentarioCreateDTO extends ComentarioUpdateDTO {
-  postId: number;
+  postId: string;
 }
