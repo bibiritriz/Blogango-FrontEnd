@@ -6,6 +6,7 @@ import {
   ComentarioCreateDTO,
   ComentarioUpdateDTO,
 } from '../../models/comentario.model';
+import { Page } from '../../models/page.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class ComentarioService {
 
   private readonly url = 'http://localhost:8080/api/comentarios';
 
-  public obterComentarios(postId: string): Observable<Comentario[]> {
-    return this.http.get<Comentario[]>(`${this.url}/${postId}`);
+  public obterComentarios(postId: string): Observable<Page<Comentario>> {
+    return this.http.get<Page<Comentario>>(`${this.url}/${postId}`);
   }
 
   public criarComentario(comentario: ComentarioCreateDTO): Observable<Comentario> {

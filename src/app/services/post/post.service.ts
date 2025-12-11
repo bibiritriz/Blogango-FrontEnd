@@ -26,8 +26,12 @@ export default class PostService {
     return this.http.get<Page<Post>>(this.url, { params });
   }
 
-  public obterPost(id: number): Observable<Post> {
+  public obterPost(id: string): Observable<Post> {
     return this.http.get<Post>(`${this.url}/${id}`);
+  }
+
+  public obterPostPorSlug(slug: string): Observable<Post> {
+    return this.http.get<Post>(`${this.url}/slug/${slug}`);
   }
 
   public listarPorCategoria(
@@ -69,7 +73,7 @@ export default class PostService {
     return this.http.put<void>(this.url, post);
   }
 
-  public deletarPost(id: number): Observable<void> {
+  public deletarPost(id: string): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);
   }
 }

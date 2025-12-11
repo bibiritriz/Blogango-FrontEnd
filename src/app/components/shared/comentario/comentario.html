@@ -1,0 +1,32 @@
+<article class="!p-2.5 comentario rounded-lg">
+  <header class="flex flex-row justify-between">
+    <div class="flex flex-col gap-0.5">
+      <h3 class="body-1-bold flex flex-row gap-0.5">
+        {{comentario.autor}}
+        <span> • {{comentario.usuario}}</span>
+      </h3>
+
+      <time [attr.datetime]="comentario.dataCriacao" class="disclaimer dataPublicacao">
+        {{comentario.dataCriacao | date: 'dd/MM/yyyy'}}
+      </time>
+    </div>
+
+    <nav aria-label="Opções do comentário">
+      <button type="button" aria-label="Editar comentário">
+        <span class="pencilIcon"
+              style="-webkit-mask-image: url('/svg/editPencil.svg'); mask-image: url('/svg/editPencil.svg'); mask-repeat: no-repeat; mask-position: center; display: inline-block;">
+        </span>
+      </button>
+
+      <button type="button" aria-label="Excluir comentário">
+        <span class="trashIcon"
+              style="-webkit-mask-image: url('/svg/trash.svg'); mask-image: url('/svg/trash.svg'); mask-repeat: no-repeat; mask-position: center; display: inline-block;">
+        </span>
+      </button>
+    </nav>
+  </header>
+
+  <p class="body-1">
+    {{comentario.conteudo}}
+  </p>
+</article>
