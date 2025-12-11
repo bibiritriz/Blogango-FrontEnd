@@ -4,6 +4,7 @@ import { ListaDePosts } from './pages/lista-de-posts/lista-de-posts';
 import { DatalhesPost } from './pages/datalhes-post/datalhes-post';
 import { EditarPost } from './pages/editar-post/editar-post';
 import { CriarPost } from './pages/criar-post/criar-post';
+import { Comentarios } from './pages/comentarios/comentarios';
 // TODO: Adicinoar comopnentes respectivos
 export const routes: Routes = [
   {
@@ -20,6 +21,11 @@ export const routes: Routes = [
         path: 'posts/:slug',
         title: 'Lendo Artigo',
         component: DatalhesPost,
+      },
+      {
+        path: 'comentarios',
+        title: 'Gerenciar Comentários',
+        component: Comentarios,
       },
       {
         path: 'posts/novo',

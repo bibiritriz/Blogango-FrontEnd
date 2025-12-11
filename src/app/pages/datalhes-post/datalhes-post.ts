@@ -73,7 +73,6 @@ export class DatalhesPost implements OnInit {
   carregarComentarios() {
     this.comentarioService.obterComentarios(this.postCorrente.id).subscribe({
       next: (result) => {
-        console.log(result);
         this.comentarios = result.content.filter((c) => c.aprovado);
       },
     });

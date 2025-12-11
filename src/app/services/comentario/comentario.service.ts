@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   Comentario,
@@ -18,6 +18,20 @@ export class ComentarioService {
 
   public obterComentarios(postId: string): Observable<Page<Comentario>> {
     return this.http.get<Page<Comentario>>(`${this.url}/${postId}`);
+  }
+
+  public obterComentariosAprovadosFalse(
+    page: number = 0,
+    size: number = 10,
+    sort: string = 'autor,desc',
+  ): Observable<Page<Comentario>> {
+    let params = new HttpParams();
+
+    params = params.append('page', page.toString());
+    params = params.append('size', size.toString());
+    params = params.append('sort', sort);
+
+    return this.http.get<Page<Comentario>>(this.url, { params });
   }
 
   public criarComentario(comentario: ComentarioCreateDTO): Observable<Comentario> {

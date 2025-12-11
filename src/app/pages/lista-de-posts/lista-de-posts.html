@@ -3,18 +3,11 @@
     <app-search-input (termoParaBusca)="filtrarPosts($event)"></app-search-input>
     <h1 class="h1">Posts</h1>
   </div>
-  <div class="content flex flex-wrap gap-6">
-    @for (post of postsExibidos; track post.id) {
-      <app-post [post]="post"></app-post>
-    } @empty {
-      <p>Nenhum post encontrado.</p>
-    }
-  </div>
   <div class="flex justify-center items-center gap-4 mt-8 pb-8">
     <button
       (click)="paginaAnterior()"
       [disabled]="isPrimeiraPagina"
-      class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:text-teal-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700"
+      class="flex items-center gap-2 !px-4 !py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:text-teal-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,5 +43,12 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
       </svg>
     </button>
+  </div>
+  <div class="content flex flex-wrap gap-6">
+    @for (post of postsExibidos; track post.id) {
+      <app-post [post]="post"></app-post>
+    } @empty {
+      <p>Nenhum post encontrado.</p>
+    }
   </div>
 </div>

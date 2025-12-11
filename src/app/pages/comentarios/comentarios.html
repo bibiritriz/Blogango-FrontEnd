@@ -1,0 +1,105 @@
+<article class="!px-4 flex flex-col gap-2">
+  <header>
+    <h1 class="h1">Comentarios</h1>
+    <h2 class="h2">Comentários aguardando aprovação</h2>
+  </header>
+  <div class="flex justify-center items-center gap-4 mt-8 pb-8">
+    <button
+      (click)="paginaAnterior()"
+      [disabled]="isPrimeiraPagina"
+      class="flex items-center gap-2 !px-4 !py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:text-teal-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-gray-700"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-4 h-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+      Anterior
+    </button>
+
+    <span class="text-sm font-medium text-gray-600 bg-gray-100 !px-3 !py-1 rounded-md">
+      {{ paginaAtual + 1 }} / {{ totalDePaginas }}
+    </span>
+
+    <button
+      (click)="proximaPagina()"
+      [disabled]="isUltimaPagina"
+      class="flex items-center gap-2 !px-4 !py-2 bg-teal-700 border border-transparent rounded-lg text-sm font-medium text-white shadow-md transition-all duration-200 hover:bg-teal-800 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+    >
+      Próximo
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-4 h-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+  </div>
+  @for (comentario of comentarios; track $index) {
+    <app-comentario (editar)="iniciarAprovado(comentario)"  (excluir)="iniciarExclusao(comentario)" [comentario]="comentario"></app-comentario>
+  }
+</article>
+
+@if (comentarioParaAprovar) {
+  <app-modal-wraper titulo="Aprovar Comentário" (fechar)="comentarioParaAprovar = null">
+
+    <div class="flex flex-col gap-4">
+
+      <div>
+        <label class="font-bold text-sm text-[#002F34]">Nome Post</label>
+        <input [value]="titulorPostEditar" disabled
+               class="w-full bg-[#FFFBE6] text-gray-700 !p-3 rounded-xl border border-yellow-200 cursor-not-allowed">
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="font-bold text-sm text-[#002F34]">Autor</label>
+          <input [value]="comentarioParaAprovar.autor" disabled
+                 class="w-full bg-[#FFFBE6] text-gray-700 !p-3 rounded-xl border border-yellow-200 cursor-not-allowed">
+        </div>
+        <div>
+          <label class="font-bold text-sm text-[#002F34]">Usuário</label>
+          <input [value]="comentarioParaAprovar.usuario" disabled
+                 class="w-full bg-[#FFFBE6] text-gray-700 !p-3 rounded-xl border border-yellow-200 cursor-not-allowed">
+        </div>
+      </div>
+
+      <div>
+        <label class="font-bold text-sm text-[#002F34]">Conteúdo</label>
+        <textarea [value]="comentarioParaAprovar.conteudo" disabled
+                  class="w-full bg-[#FFFBE6] text-gray-700 !p-3 rounded-xl border border-yellow-200 h-24 resize-none cursor-not-allowed"></textarea>
+      </div>
+
+      <div class="flex justify-end gap-3 !pt-4 mt-2">
+        <button type="button" (click)="comentarioParaAprovar = null"
+                class="bg-[#DC3545] hover:bg-red-700 text-white !px-6 !py-2 rounded-xl font-bold shadow-md transition-colors">
+          Cancelar
+        </button>
+
+        <button type="button" (click)="aprovarComentario()"
+                class="bg-[#007BFF] hover:bg-blue-700 text-white !px-6 !py-2 rounded-xl font-bold shadow-md transition-colors">
+          Aprovar
+        </button>
+      </div>
+
+    </div>
+
+  </app-modal-wraper>
+}
+@if (comentarioParaExcluir) {
+  <app-confirm-modal
+    titulo="Confirmar Exclusão"
+    mensagem="A exclusão desse comentário não poderá ser desfeita."
+    (cancelar)="comentarioParaExcluir = null"
+    (confirmar)="deletarComentario()">
+  </app-confirm-modal>
+}
