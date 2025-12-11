@@ -28,7 +28,7 @@ export const routes: Routes = [
         component: Comentarios,
       },
       {
-        path: 'posts/novo',
+        path: 'post/novo',
         title: 'Criar Post',
         component: CriarPost,
       },

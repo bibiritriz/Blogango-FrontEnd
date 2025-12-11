@@ -14,7 +14,9 @@ import PostService from '../../services/post/post.service';
 export class ListaDePosts implements OnInit {
   paginaAtual: number = 0;
 
-  totalDePaginas: number = 1;
+  totalDePaginas: number = 0;
+
+  tamanhoPagina: number = 5;
 
   isPrimeiraPagina: boolean = true;
 
@@ -36,7 +38,7 @@ export class ListaDePosts implements OnInit {
     if (this.tituloParaBusca.trim()) {
       this.filtrarPosts(this.tituloParaBusca);
     } else {
-      this.postService.listar(this.paginaAtual, 3).subscribe({
+      this.postService.listar(this.paginaAtual, this.tamanhoPagina).subscribe({
         next: (page) => {
           this.todosOsPosts = page.content;
           this.postsExibidos = page.content;
@@ -51,7 +53,7 @@ export class ListaDePosts implements OnInit {
   filtrarPosts(titulo: string) {
     this.tituloParaBusca = titulo.trim();
     if (this.tituloParaBusca) {
-      this.postService.buscarPorTitulo(titulo, this.paginaAtual, 3).subscribe({
+      this.postService.buscarPorTitulo(titulo, this.paginaAtual, this.tamanhoPagina).subscribe({
         next: (page) => {
           this.postsExibidos = page.content;
           this.totalDePaginas = page.totalPages;
