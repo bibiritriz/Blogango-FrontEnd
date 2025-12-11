@@ -45,7 +45,7 @@ export class FormularioPost implements OnInit {
   formulario = this.formBuilder.group({
     titulo: ['', [Validators.required, Validators.minLength(10)]],
     conteudo: ['', [Validators.required, Validators.minLength(50)]],
-    autor: [''],
+    autor: ['', Validators.required],
     categorias: [[] as Categoria[], Validators.minLength(1)],
   });
 
