@@ -4,3 +4,8 @@ export interface Categoria {
   descricao: string;
   slug: string;
 }
+
+export interface CategoriaUpdateDTO {
+  nome: string;
+  descricao: string;
+}
