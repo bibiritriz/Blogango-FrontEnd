@@ -9,7 +9,7 @@ import { Categoria, CategoriaCreateDTO } from '../../models/categoria.model';
 export class CategoriaService {
   private readonly http = inject(HttpClient);
 
-  private readonly url = 'localhost:8080/api/categorias';
+  private readonly url = 'http://localhost:8080/api/categorias';
 
   public criarCategoria(categoria: CategoriaCreateDTO): Observable<string> {
     return this.http.post<string>(this.url, categoria);
