@@ -64,10 +64,7 @@
       </div>
     </footer>
 
-    <button
-      type="button"
-      class="flex items-center justify-center gap-2 !px-4 !py-2 rounded-full font-medium shadow-sm w-1/2 overline"
-    >
+    <button type="button" (click)="iniciarCriacao()" class="flex items-center justify-center gap-2 !px-4 !py-2 rounded-full font-medium shadow-sm w-1/2 overline">
       Adicionar comentário
     </button>
 
@@ -133,6 +130,41 @@
 
     </form>
 
+  </app-modal-wraper>
+}
+
+@if(comentarioParaCriar){
+  <app-modal-wraper titulo="Criar Comentário" (fechar)="comentarioParaCriar = null">
+
+    <form (submit)="criarComentario()" class="flex flex-col gap-4">
+
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="font-bold text-sm">Autor</label>
+          <input [(ngModel)]="comentarioParaCriar.autor" name="autor"  class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200">
+        </div>
+        <div>
+          <label class="font-bold text-sm">Usuário</label>
+          <input [(ngModel)]="comentarioParaCriar.usuario" name="usuario" class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200">
+        </div>
+      </div>
+
+      <div>
+        <label class="font-bold text-sm">Conteúdo</label>
+        <textarea [(ngModel)]="comentarioParaCriar.conteudo" name="conteudo"
+                  class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200 h-24"></textarea>
+      </div>
+
+      <div class="flex justify-end gap-3 !pt-4 mt-2">
+        <button type="button" (click)="comentarioParaCriar = null" class="bg-red-600 text-white !px-6 !py-2 rounded-lg font-bold">
+          Cancelar
+        </button>
+        <button type="submit" class="bg-blue-600 text-white !px-6 !py-2 rounded-lg font-bold">
+          Salvar
+        </button>
+      </div>
+
+    </form>
   </app-modal-wraper>
 }
 
