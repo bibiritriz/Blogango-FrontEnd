@@ -14,7 +14,7 @@
 }
 
 .comentario{
-  border: 0,4px solid var(--color-gray-dark1);
+  border: 0.4px solid var(--color-gray-dark1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
