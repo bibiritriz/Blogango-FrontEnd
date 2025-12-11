@@ -1,0 +1,112 @@
+<div class="!p-5">
+  <h1 class="h1">{{ title }}</h1>
+  <form [formGroup]="formulario" class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <label for="titulo" class="font-medium text-gray-700">Título</label>
+      <input
+        id="titulo"
+        type="text"
+        formControlName="titulo"
+        class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-teal-500"
+        placeholder="Insira o titulo"
+      />
+      @if (formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched) {
+        <span class="text-red-500 text-sm"
+          >O título é obrigatório e precisa de no minimo 10 letras.</span
+        >
+      }
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="titulo" class="font-medium text-gray-700">Autor</label>
+      <input
+        id="autor"
+        type="text"
+        formControlName="autor"
+        class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-teal-500"
+        placeholder="Insiria o autor"
+      />
+      @if (formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched) {
+        <span class="text-red-500 text-sm"
+          >O título é obrigatório e precisa de no minimo 10 letras.</span
+        >
+      }
+    </div>
+
+    <div class="flex flex-col gap-1">
+      <label for="conteudo" class="font-medium text-gray-700">Conteúdo</label>
+      <textarea
+        id="conteudo"
+        formControlName="conteudo"
+        rows="4"
+        placeholder="Insira o conteudo"
+        class="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-teal-500"
+      ></textarea>
+      @if (formulario.get('conteudo')?.invalid && formulario.get('conteudo')?.touched) {
+        <span class="text-red-500 text-sm"
+          >O conteudo é obrigatório e precisa de no minimo 50 letras.</span
+        >
+      }
+    </div>
+
+    @if (formulario.get('categorias')?.value) {
+      <div class="flex flex-wrap gap-2">
+        @for (categoria of categoriasParaMostrar; track categoria.id) {
+          <button
+            type="button"
+            class="disclaimer btn-categoria py-1.5 transition-all duration-200 hover:scale-105 active:scale-95"
+            [style.background-color]="categoria.cor || '#00684A'"
+          >
+            {{ categoria.nome }}
+          </button>
+        }
+      </div>
+    }
+
+    @if (mostrandoSelecao) {
+      <div class="p-4 rounded-lg bg-gray-50 mt-2 animate-fade-in">
+        <p class="text-xs font-bold text-gray-500 mb-2 uppercase tracking-wide">
+          Selecione para adicionar:
+        </p>
+
+        <div class="flex flex-wrap gap-2">
+          @for (categoria of TodasAscategorias; track categoria.id) {
+            <button
+              type="button"
+              (click)="alternarCategoria(categoria)"
+              [class.opacity-50]="estaSelecionada(categoria)"
+              [class.line-through]="estaSelecionada(categoria)"
+              [style.background-color]="
+                estaSelecionada(categoria) ? '#e5e7eb' : categoria.cor || '#00684A'
+              "
+              [style.color]="estaSelecionada(categoria) ? '#9ca3af' : 'white'"
+              class="disclaimer btn-categoria py-1.5 transition-all duration-200 hover:scale-105 active:scale-95"
+              [style.background-color]="categoria.cor || '#00684A'"
+            >
+              {{ categoria.nome }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+
+    <div class="flex flex-col-2 gap-2">
+      <button class="addCategoria" (click)="mostrarCategorias()">
+        <img src="images/addIcon.svg" alt="adicionar categoria" class="body-2" />
+      </button>
+      <p class="text-center">Categorias</p>
+    </div>
+
+    <div class="flex gap-5">
+      <button type="submit" class="btn-postar body-2 w-full bg-teal-700 text-white py-2" (click)="postar()">
+        Postar
+      </button>
+      <button type="submit" class="btn-salvar body-2 w-full bg-teal-700 text-white py-2" (click)="salvar()">
+        Salvar
+      </button>
+      <button type="submit" class="btn-cancelar body-2 w-full bg-teal-700 text-white py-2" (click)="cancelar()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

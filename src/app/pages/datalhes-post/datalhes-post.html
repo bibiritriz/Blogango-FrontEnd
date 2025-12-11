@@ -1,80 +1,119 @@
-@if (!postCorrente){
+@if (!postCorrente) {
   <p>Carregando...</p>
 } @else {
   <article class="post-container flex flex-col gap-4">
     <header>
-      <h1 class="h1">{{postCorrente.titulo}}</h1>
+      <h1 class="h1">{{ postCorrente.titulo }}</h1>
 
       <div class="flex flex-row justify-between">
         <div class="meta-data overline">
           <p>
-            Criado em <time [attr.datetime]="postCorrente.dataCriacao">{{postCorrente.dataCriacao | date:'dd/MM/yyyy'}}</time>
+            Criado em
+            <time [attr.datetime]="postCorrente.dataCriacao">{{
+              postCorrente.dataCriacao | date: 'dd/MM/yyyy'
+            }}</time>
           </p>
           <p>
-            Atualizado em <time [attr.datetime]="postCorrente.dataAtualizacao">{{postCorrente.dataAtualizacao | date:'dd/MM/yyyy'}}</time>
+            Atualizado em
+            <time [attr.datetime]="postCorrente.dataAtualizacao">{{
+              postCorrente.dataAtualizacao | date: 'dd/MM/yyyy'
+            }}</time>
           </p>
         </div>
-          <div class="flex flex-row gap-2" role="toolbar" aria-label="Ações do post">
-            <button type="button" class= "flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-editar">
-              <div class="w-5 h-5 pencilIcon"
-                   style="-webkit-mask-image: url('/svg/editPencil.svg'); mask-image: url('/svg/editPencil.svg'); mask-repeat: no-repeat; mask-position: center;">
-              </div>
-              Editar
-            </button>
-            <button (click)="excluirPost()" type="button" class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-excluir">
-              <div class="w-5 h-5 trashIcon"
-                   style="-webkit-mask-image: url('/svg/trash.svg'); mask-image: url('/svg/trash.svg'); mask-repeat: no-repeat; mask-position: center;">
-              </div>
-              Excluir
-            </button>
-          </div>
+        <div class="flex flex-row gap-2" role="toolbar" aria-label="Ações do post">
+          <button
+            type="button"
+            class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-editar"
+          >
+            <div
+              class="w-5 h-5 pencilIcon"
+              style="
+                -webkit-mask-image: url('/svg/editPencil.svg');
+                mask-image: url('/svg/editPencil.svg');
+                mask-repeat: no-repeat;
+                mask-position: center;
+              "
+            ></div>
+            Editar
+          </button>
+          <button
+            (click)="excluirPost()"
+            type="button"
+            class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-excluir"
+          >
+            <div
+              class="w-5 h-5 trashIcon"
+              style="
+                -webkit-mask-image: url('/svg/trash.svg');
+                mask-image: url('/svg/trash.svg');
+                mask-repeat: no-repeat;
+                mask-position: center;
+              "
+            ></div>
+            Excluir
+          </button>
+        </div>
       </div>
     </header>
 
-
     <ul class="lista-categorias" aria-label="Categorias" class="flex flex-row gap-2">
-      @for (categoria of postCorrente.categorias; track categoria.id){
+      @for (categoria of postCorrente.categorias; track categoria.id) {
         <li>
-          <span class="categoria disclaimer"  [style.background-color]="categoria.cor || '#00684A'">{{categoria.nome}}</span>
+          <span
+            class="categoria disclaimer"
+            [style.background-color]="categoria.cor || '#00684A'"
+            >{{ categoria.nome }}</span
+          >
         </li>
       }
     </ul>
 
     <section class="wrap-break-word">
-      {{postCorrente.conteudo}}
+      {{ postCorrente.conteudo }}
     </section>
 
     <footer class="post-stats flex flex-row gap-4">
       <div title="Visualizações" class="flex flex-row gap-1">
         <img src="svg/contadorVisualizacao.svg" alt="Ícone de olho" />
-        <span class="body-1">{{postCorrente.visualizacoes || 0}} visualizações</span>
+        <span class="body-1">{{ postCorrente.visualizacoes || 0 }} visualizações</span>
       </div>
       <div title="Comentários" class="flex flex-row gap-1">
         <img src="svg/contadorComentario.svg" alt="Ícone de balão de fala" />
-        <span class="body-1">{{postCorrente.numeroComentarios || 0}} comentários</span>
+        <span class="body-1">{{ postCorrente.numeroComentarios || 0 }} comentários</span>
       </div>
     </footer>
 
-    <button type="button" class="flex items-center justify-center gap-2 !px-4 !py-2 rounded-full font-medium shadow-sm w-1/2 overline">
+    <button
+      type="button"
+      class="flex items-center justify-center gap-2 !px-4 !py-2 rounded-full font-medium shadow-sm w-1/2 overline"
+    >
       Adicionar comentário
     </button>
 
-    @if(comentarios.length > 0){
+    @if (comentarios.length > 0) {
       <section id="comentarios" aria-labelledby="titulo-comentarios" class="flex flex-col gap-2">
         @for (comentario of comentarios; track comentario.id) {
           <app-comentario [comentario]="comentario"></app-comentario>
         }
       </section>
     } @else {
-      <div class="flex flex-col items-center justify-center py-10 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 text-center">
-        <div class="w-12 h-12 bg-gray-300 mb-2"
-             style="-webkit-mask-image: url('/svg/contadorComentario.svg'); mask-image: url('/svg/contadorComentario.svg'); mask-repeat: no-repeat; mask-position: center;">
-        </div>
+      <div
+        class="flex flex-col items-center justify-center py-10 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 text-center"
+      >
+        <div
+          class="w-12 h-12 bg-gray-300 mb-2"
+          style="
+            -webkit-mask-image: url('/svg/contadorComentario.svg');
+            mask-image: url('/svg/contadorComentario.svg');
+            mask-repeat: no-repeat;
+            mask-position: center;
+          "
+        ></div>
         <p class="text-gray-600 font-medium text-lg">Ainda não há comentários.</p>
-        <p class="text-gray-400 text-sm">Seja a primeira pessoa a compartilhar sua opinião sobre este post!</p>
+        <p class="text-gray-400 text-sm">
+          Seja a primeira pessoa a compartilhar sua opinião sobre este post!
+        </p>
       </div>
     }
-
   </article>
-
 }
