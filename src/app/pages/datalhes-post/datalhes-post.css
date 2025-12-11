@@ -1,0 +1,29 @@
+.post-container{
+  padding: 0 var(--spacing-3);
+}
+
+.meta-data{
+  color: var(--color-gray-base);
+}
+
+.botao-editar {
+  border: 1px solid var(--color-blue-base);
+  color: var(--color-blue-base);
+
+  .pencilIcon {
+    background-color: var(--color-blue-base);
+    width: 20px;
+    height: 20px;
+  }
+}
+.botao-excluir {
+  border: 1px solid var(--color-red-base);
+  color: var(--color-red-base);
+
+  .trashIcon {
+    background-color: var(--color-red-base);
+    width: 20px;
+    height: 20px;
+  }
+}
+

@@ -14,7 +14,11 @@ export const routes: Routes = [
         title: 'Blogango - Posts',
         component: ListaDePosts,
       },
-      { path: 'post/:id', title: 'Blogango - Detalhes Post', component: DatalhesPost },
+      {
+        path: 'posts/:slug',
+        title: 'Lendo Artigo',
+        component: DatalhesPost,
+      },
       /*
       {
         path: 'posts/novo',
@@ -24,10 +28,7 @@ export const routes: Routes = [
         path: 'posts/editar/:id',
         title: 'Editar Post',
       },
-      {
-        path: 'posts/:slug',
-        title: 'Lendo Artigo',
-      },
+
       {
         path: 'rascunhos',
         title: 'Meus Rascunhos',

@@ -15,6 +15,6 @@ export class PostComponent {
   private router = inject(Router);
 
   abrirPost() {
-    this.router.navigate(['/post', this.post.id]);
+    this.router.navigate(['/posts', this.post.slug]);
   }
 }
