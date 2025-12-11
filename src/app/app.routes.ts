@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainLayout } from './layout/main-layout/main-layout';
-import { Teste } from './components/teste/teste';
+import { ListaDePosts } from './pages/lista-de-posts/lista-de-posts';
 // TODO: Adicinoar comopnentes respectivos
 export const routes: Routes = [
   {
@@ -11,7 +11,7 @@ export const routes: Routes = [
       {
         path: 'posts',
         title: 'Blogango - Posts',
-        component: Teste,
+        component: ListaDePosts,
       },
       /*
       {
