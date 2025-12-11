@@ -33,16 +33,20 @@ export class ListaDePosts implements OnInit {
   }
 
   carregarPosts() {
-    this.postService.listar(this.paginaAtual, 3).subscribe({
-      next: (page) => {
-        this.todosOsPosts = page.content;
-        this.postsExibidos = page.content;
-        this.totalDePaginas = page.totalPages;
-        this.isUltimaPagina = page.last;
-        this.isPrimeiraPagina = page.first;
-      },
-      error: (err) => console.log(err),
-    });
+    if (this.tituloParaBusca) {
+      this.filtrarPosts(this.tituloParaBusca);
+    } else {
+      this.postService.listar(this.paginaAtual, 3).subscribe({
+        next: (page) => {
+          this.todosOsPosts = page.content;
+          this.postsExibidos = page.content;
+          this.totalDePaginas = page.totalPages;
+          this.isUltimaPagina = page.last;
+          this.isPrimeiraPagina = page.first;
+        },
+        error: (err) => console.log(err),
+      });
+    }
   }
 
   filtrarPosts(titulo: string) {

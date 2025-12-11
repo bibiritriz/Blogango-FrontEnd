@@ -20,7 +20,7 @@
   padding: 0.7rem;
   border-radius: 1rem;
   color: var(--color-default-white);
-  background-color: blue;
+  background-color: var(--color-blue-dark3);
 }
 
 .container:hover{
