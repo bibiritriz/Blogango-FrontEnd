@@ -10,6 +10,7 @@ import {
   withViewTransitions,
 } from '@angular/router';
 
+import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 import { httpInterceptor } from './interceptors/httpInterceptor';
@@ -28,5 +29,9 @@ export const appConfig: ApplicationConfig = {
       }),
       withViewTransitions(),
     ),
+    provideHttpClient(withFetch()),
+    provideHotToastConfig({
+      position: 'top-center',
+    }),
   ],
 };

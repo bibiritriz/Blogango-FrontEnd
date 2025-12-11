@@ -2,7 +2,8 @@ import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { SpringErrorResponse } from '../types/api-error';
 
-export const httpInterceptor: HttpInterceptorFn = (req, next) => next(req).pipe(
+export const httpInterceptor: HttpInterceptorFn = (req, next) =>
+  next(req).pipe(
     catchError((httpError: HttpErrorResponse) => {
       let mensagem = 'Ocorreu um erro inesperado';
 
