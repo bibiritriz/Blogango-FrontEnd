@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { ListaDePosts } from './pages/lista-de-posts/lista-de-posts';
+import { DatalhesPost } from './pages/datalhes-post/datalhes-post';
 // TODO: Adicinoar comopnentes respectivos
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
         title: 'Blogango - Posts',
         component: ListaDePosts,
       },
+      { path: 'post/:id', title: 'Blogango - Detalhes Post', component: DatalhesPost },
       /*
       {
         path: 'posts/novo',

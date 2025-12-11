@@ -1,4 +1,7 @@
-<div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-2xl shadow-md gap-4">
+<div
+  class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-2xl shadow-md gap-4"
+  (click)="abrirPost()"
+>
   <div class="titulos">
     <h2 class="subtitle">{{ post.titulo }}</h2>
     <h3 class="overline flex gap-1">
