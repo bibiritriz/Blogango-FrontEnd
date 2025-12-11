@@ -11,8 +11,8 @@ export class ComentarioService {
 
   private readonly url = 'http://localhost:8080/api/comentarios';
 
-  public obterComentario(comentarioId: string): Observable<Comentario[]> {
-    return this.http.get<Comentario[]>(`${this.url}/${comentarioId}`);
+  public obterComentario(comentarioId: string): Observable<Comentario> {
+    return this.http.get<Comentario>(`${this.url}/${comentarioId}`);
   }
 
   public criarComentario(comentario: Comentario): Observable<Comentario> {
