@@ -1,19 +1,22 @@
-<div class="container rounded-2xl shadow-sm grid grid-cols-1 gap-4">
+<div
+  class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-2xl shadow-md gap-4"
+  (click)="abrirPost()"
+>
   <div class="titulos">
-    <h2 class="subtitle">Tutorial de Spring Boot com MongoDB</h2>
+    <h2 class="subtitle">{{ post.titulo }}</h2>
     <h3 class="overline flex gap-1">
-      <p>04/12/2025 •</p>
-      <span>Autor</span>
+      <p>{{ post.dataCriacao | date: 'dd/MM/yyyy' }} •</p>
+      <span>{{ post.autor }}</span>
     </h3>
   </div>
-  <div class="content ">
-    <p class="body-2 truncate-clamp-2">
-      Este é um conteúdo de teste criado para validar a restrição de no míni…
+  <div class="content">
+    <p class="body-2 truncate w-full">
+      {{ post.conteudo }}
     </p>
   </div>
-  <div class="categorias flex flex-wrap gap-2">
-    <div class="categoria disclaimer">Java</div>
-    <div class="categoria disclaimer">Spring Boot</div>
-    <div class="categoria disclaimer">MongoDB</div>
+  <div class="categorias flex flex-wrap gap-2 w-full">
+    @for (categoria of post.categorias; track categoria.id) {
+      <div class="categoria disclaimer">{{ categoria.nome.toUpperCase() }}</div>
+    }
   </div>
 </div>

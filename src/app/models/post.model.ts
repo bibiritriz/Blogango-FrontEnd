@@ -2,7 +2,7 @@ import { Categoria } from './categoria.model';
 import { StatusPost } from './status.model';
 
 export interface Post {
-  id: number;
+  id: string;
   titulo: string;
   conteudo: string;
   autor: string;
@@ -12,6 +12,7 @@ export interface Post {
   status: StatusPost;
   visualizacoes: number;
   numeroComentarios: number;
+  slug: string;
 }
 
 export interface PostCreateDTO {

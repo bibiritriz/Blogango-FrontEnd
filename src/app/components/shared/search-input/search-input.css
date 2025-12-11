@@ -1,0 +1,22 @@
+img{
+  padding: 10px;
+
+}
+
+.container{
+  border-radius: 16px;
+}
+
+.busca{
+  border-radius: 10px 0 0 10px;
+  background-color: var(--color-green-dark3);
+}
+
+.busca:hover{
+  cursor: pointer;
+  background-color: var(--color-green-dark2);
+}
+
+input{
+  padding: 0 1rem 0 1rem;
+}
