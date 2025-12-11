@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { MainLayout } from './layout/main-layout/main-layout';
 import { ListaDePosts } from './pages/lista-de-posts/lista-de-posts';
 import { DatalhesPost } from './pages/datalhes-post/datalhes-post';
+import { EditarPost } from './pages/editar-post/editar-post';
+import { CriarPost } from './pages/criar-post/criar-post';
 // TODO: Adicinoar comopnentes respectivos
 export const routes: Routes = [
   {
@@ -19,29 +21,29 @@ export const routes: Routes = [
         title: 'Lendo Artigo',
         component: DatalhesPost,
       },
-      /*
       {
         path: 'posts/novo',
-        title: 'Criar Novo Post',
+        title: 'Criar Post',
+        component: CriarPost,
       },
       {
-        path: 'posts/editar/:id',
+        path: 'posts/editar/:slug',
         title: 'Editar Post',
+        component: EditarPost,
       },
-
-      {
-        path: 'rascunhos',
-        title: 'Meus Rascunhos',
-      },
-      {
-        path: 'rascunhos/editar/:id',
-        title: 'Editar Rascunho',
-      },
-      {
-        path: 'comentarios',
-        title: 'Gerenciar Comentários',
-      },
-      */
+      // {
+      //   path: 'rascunhos',
+      //   title: 'Meus Rascunhos',
+      // },
+      // {
+      //   path: 'rascunhos/editar/:id',
+      //   title: 'Editar Rascunho',
+      // },
+      // {
+      //   path: 'comentarios',
+      //   title: 'Gerenciar Comentários',
+      // },
+      //
     ],
   },
 ];

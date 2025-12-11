@@ -16,6 +16,10 @@
     height: 20px;
   }
 }
+
+button{
+  cursor: pointer;
+}
 .botao-excluir {
   border: 1px solid var(--color-red-base);
   color: var(--color-red-base);

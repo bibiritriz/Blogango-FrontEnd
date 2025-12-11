@@ -1,5 +1,6 @@
+/* eslint-disable dot-notation */
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { DatePipe } from '@angular/common';
 import { map, switchMap, tap } from 'rxjs';
@@ -14,7 +15,7 @@ import { ModalWraper } from '../../components/shared/modal-wraper/modal-wraper';
 
 @Component({
   selector: 'app-datalhes-post',
-  imports: [DatePipe, Comentario, ConfirmModal, ModalWraper, FormsModule],
+  imports: [DatePipe, Comentario, ConfirmModal, ModalWraper, FormsModule, RouterLink],
   templateUrl: './datalhes-post.html',
   styleUrl: './datalhes-post.css',
 })
@@ -42,7 +43,7 @@ export class DatalhesPost implements OnInit {
   ngOnInit() {
     this.router.params
       .pipe(
-        map((params) => params.slug),
+        map((params) => params['slug']),
         switchMap((slug) => this.postService.obterPostPorSlug(slug)),
         tap((post) => {
           this.postCorrente = post;
@@ -57,6 +58,10 @@ export class DatalhesPost implements OnInit {
       .subscribe((comentarios) => {
         this.comentarios = comentarios.content.filter((c) => c.aprovado);
       });
+  }
+
+  editar() {
+    this.route.navigate(['/posts/editar', this.postCorrente.slug]);
   }
 
   carregarComentarios() {

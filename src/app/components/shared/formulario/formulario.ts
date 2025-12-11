@@ -107,7 +107,7 @@ export class FormularioPost implements OnInit {
   processarEnvio(statusDoPost: StatusPost) {
     const dadosDoFormulario = this.formulario.getRawValue();
     if (this.formulario.valid) {
-      if (this.isEdicao) {
+      if (this.isEdicao && this.post) {
         const postAtualizado: PostUpdateDTO = {
           titulo: dadosDoFormulario.titulo as string,
           conteudo: dadosDoFormulario.conteudo as string,
@@ -116,7 +116,7 @@ export class FormularioPost implements OnInit {
           status: statusDoPost,
         };
         this.postService
-          .atualizarPost(postAtualizado)
+          .atualizarPost(this.post.id, postAtualizado)
           .pipe(this.toast.observe({ success: 'Post atualizado!' }))
           .subscribe({
             next: () => {
