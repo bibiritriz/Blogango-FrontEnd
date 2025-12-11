@@ -69,8 +69,8 @@ export default class PostService {
     return this.http.post<string>(this.url, post);
   }
 
-  public atualizarPost(post: PostUpdateDTO): Observable<void> {
-    return this.http.put<void>(this.url, post);
+  public atualizarPost(postId: string, post: PostUpdateDTO): Observable<void> {
+    return this.http.put<void>(`${this.url}/${postId}`, post);
   }
 
   public deletarPost(id: string): Observable<void> {

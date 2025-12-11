@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Comentario as TipoComentario } from '../../../models/comentario.model';
 
@@ -10,4 +10,8 @@ import { Comentario as TipoComentario } from '../../../models/comentario.model';
 })
 export class Comentario {
   @Input({ required: true }) comentario!: TipoComentario;
+
+  @Output() editar = new EventEmitter<void>();
+
+  @Output() excluir = new EventEmitter<void>();
 }

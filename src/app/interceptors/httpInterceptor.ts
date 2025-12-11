@@ -4,11 +4,11 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { inject } from '@angular/core';
 import { SpringErrorResponse } from '../types/api-error';
 
-export const httpInterceptor: HttpInterceptorFn = (req, next) =>
-  next(req).pipe(
-    catchError((httpError: HttpErrorResponse) => {
-      const toast = inject(HotToastService);
+export const httpInterceptor: HttpInterceptorFn = (req, next) => {
+  const toast = inject(HotToastService);
 
+  return next(req).pipe(
+    catchError((httpError: HttpErrorResponse) => {
       let mensagem = 'Ocorreu um erro inesperado';
 
       if (httpError.error && typeof httpError.error === 'object') {
@@ -28,3 +28,4 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) =>
       return throwError(() => httpError);
     }),
   );
+};

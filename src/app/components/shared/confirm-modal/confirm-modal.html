@@ -1,0 +1,23 @@
+<app-modal-wraper [titulo]="titulo" (fechar)="cancelar.emit()">
+
+  <div class="flex flex-col items-center text-center gap-4">
+    <div class="w-16 h-16 rounded-full border-4 border-red-500 flex items-center justify-center text-red-500 text-4xl font-bold">
+      !
+    </div>
+
+    <h3 class="text-red-500 font-bold text-lg">Tem certeza?</h3>
+    <p class="text-gray-600">{{ mensagem }}</p>
+
+    <div class="flex gap-4 w-full mt-4">
+      <button (click)="cancelar.emit()"
+              class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700">
+        Cancelar
+      </button>
+      <button (click)="confirmar.emit()"
+              class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700">
+        Excluir
+      </button>
+    </div>
+  </div>
+
+</app-modal-wraper>
