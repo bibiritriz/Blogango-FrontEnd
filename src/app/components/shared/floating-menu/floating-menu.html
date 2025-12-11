@@ -1,0 +1,39 @@
+<nav aria-label="Navegação Principal" class="fixed flex bottom-2 w-full justify-center items-center">
+  <ul class="flex flex-row gap-4 items-center justify-evenly items-navegacao w-fit !p-4 rounded-lg">
+    <li class="w-full">
+      <a routerLink="/posts/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="item-activated" class="flex flex-col justify-center items-center w-full h-full gap-0.5">
+        <div class="w-6 h-6 bg-current" aria-hidden="true"
+             style="-webkit-mask-image: url('/svg/home.svg'); mask-image: url('/svg/home.svg'); mask-repeat: no-repeat; mask-position: center; mask-size: 100%;">
+        </div>
+        <span class="disclaimer hidden [.item-activated_&]:block">Home</span>
+      </a>
+    </li>
+
+    <li class="w-full">
+      <a routerLink="/post/novo" routerLinkActive="item-activated" class="flex flex-col justify-center items-center w-full h-full gap-0.5">
+        <div class="w-6 h-6 bg-current" aria-hidden="true"
+             style="-webkit-mask-image: url('/svg/createPost.svg'); mask-image: url('/svg/createPost.svg'); mask-repeat: no-repeat; mask-position: center; mask-size: 100%;">
+        </div>
+        <span class="disclaimer hidden [.item-activated_&]:block">Novo</span>
+      </a>
+    </li>
+
+    <li class="w-full">
+      <a routerLink="/rascunhos" routerLinkActive="item-activated" class="flex flex-col justify-center items-center w-full h-full gap-0.5">
+        <div class="w-6 h-6 bg-current" aria-hidden="true"
+             style="-webkit-mask-image: url('/svg/rascunho.svg'); mask-image: url('/svg/rascunho.svg'); mask-repeat: no-repeat; mask-position: center; mask-size: 100%;">
+        </div>
+        <span class="disclaimer hidden [.item-activated_&]:block">Rascunho</span>
+      </a>
+    </li>
+
+    <li class="w-full">
+      <a routerLink="/comentarios" routerLinkActive="item-activated" class="flex flex-col justify-center items-center w-full h-full gap-0.5">
+        <div class="w-6 h-6 bg-current" aria-hidden="true"
+             style="-webkit-mask-image: url('/svg/comentario.svg'); mask-image: url('/svg/comentario.svg'); mask-repeat: no-repeat; mask-position: center; mask-size: 100%;">
+        </div>
+        <span class="disclaimer hidden [.item-activated_&]:block">Comentário</span>
+      </a>
+    </li>
+  </ul>
+</nav>

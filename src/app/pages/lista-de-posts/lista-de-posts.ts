@@ -44,7 +44,6 @@ export class ListaDePosts implements OnInit {
           this.isUltimaPagina = page.last;
           this.isPrimeiraPagina = page.first;
         },
-        error: (err) => console.log(err),
       });
     }
   }
@@ -59,7 +58,6 @@ export class ListaDePosts implements OnInit {
           this.isUltimaPagina = page.last;
           this.isPrimeiraPagina = page.first;
         },
-        error: (err) => console.log(err),
       });
     } else {
       this.postsExibidos = this.todosOsPosts;
