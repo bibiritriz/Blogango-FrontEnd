@@ -1,0 +1,21 @@
+.container{
+  width: 408px;
+  min-height: 152px;
+  padding: var(--spacing-3);
+  background-color: var(--color-gray-light2);
+}
+
+.subtitle{
+  margin-bottom: 2px;
+}
+
+.categoria{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  min-width: 85px;
+  height: 18px;
+  border-radius: 1rem;
+  color: var(--color-default-white);
+  background-color: blue;
+}

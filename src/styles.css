@@ -156,6 +156,7 @@ body {
   font-family: var(--font-sans), sans-serif;
   font-weight: 600;
   font-size: 0.6875rem;
+  text-decoration: none;
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
