@@ -164,7 +164,7 @@ export class FormularioPost implements OnInit {
             categorias: this.post.categorias,
           });
         },
-        error: (err) => console.log(err),
+        error: (err) => this.toast.error('Erro ao carregar dados do post.'),
       });
     }
   }
