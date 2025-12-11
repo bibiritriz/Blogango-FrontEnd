@@ -10,7 +10,7 @@ import { Post, PostCreateDTO, PostUpdateDTO } from '../../models/post.model';
 export default class PostService {
   private readonly http = inject(HttpClient);
 
-  private readonly url = 'localhost:8080/api/posts';
+  private readonly url = 'http://localhost:8080/api/posts';
 
   public listar(
     page: number = 0,
