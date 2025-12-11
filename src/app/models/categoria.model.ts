@@ -5,7 +5,7 @@ export interface Categoria {
   slug: string;
 }
 
-export interface CategoriaUpdateDTO {
+export interface CategoriaCreateDTO {
   nome: string;
   descricao: string;
 }
