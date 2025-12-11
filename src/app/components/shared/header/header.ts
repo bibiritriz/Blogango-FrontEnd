@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     // Exemplo para testar toast
     this.comentarioService
-      .obterComentario('693218d7c5573ca6d33b0e12')
+      .obterComentarios('693218d7c5573ca6d33b0e12')
       .pipe(
         this.toast.observe({
           success: 'Sucesso',
