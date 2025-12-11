@@ -54,7 +54,7 @@ export class FormularioPost implements OnInit {
       next: (resposta) => {
         this.TodasAscategorias = resposta;
       },
-      error: (err) => console.log(err),
+      error: (err) => this.toast.error('Erro ao carregar categorias. Tente novamente mais tarde.'),
     });
 
     this.slugPost = this.route.snapshot.paramMap.get('slug');
