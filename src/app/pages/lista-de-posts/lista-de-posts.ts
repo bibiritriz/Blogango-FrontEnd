@@ -33,7 +33,7 @@ export class ListaDePosts implements OnInit {
   }
 
   carregarPosts() {
-    if (this.tituloParaBusca) {
+    if (this.tituloParaBusca.trim()) {
       this.filtrarPosts(this.tituloParaBusca);
     } else {
       this.postService.listar(this.paginaAtual, 3).subscribe({
@@ -63,6 +63,7 @@ export class ListaDePosts implements OnInit {
       });
     } else {
       this.postsExibidos = this.todosOsPosts;
+      this.carregarPosts();
     }
   }
 
