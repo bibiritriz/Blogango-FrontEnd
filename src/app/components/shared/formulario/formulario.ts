@@ -45,7 +45,7 @@ export class FormularioPost implements OnInit {
   formulario = this.formBuilder.group({
     titulo: ['', [Validators.required, Validators.minLength(10)]],
     conteudo: ['', [Validators.required, Validators.minLength(50)]],
-    autor: [''],
+    autor: ['', Validators.required],
     categorias: [[] as Categoria[], Validators.minLength(1)],
   });
 
@@ -164,7 +164,7 @@ export class FormularioPost implements OnInit {
             categorias: this.post.categorias,
           });
         },
-        error: (err) => console.log(err),
+        error: (err) => this.toast.error('Erro ao carregar dados do post.'),
       });
     }
   }
