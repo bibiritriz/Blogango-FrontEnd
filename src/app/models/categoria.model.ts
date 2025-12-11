@@ -3,6 +3,7 @@ export interface Categoria {
   nome: string;
   descricao: string;
   slug: string;
+  cor: string;
 }
 
 export interface CategoriaCreateDTO {

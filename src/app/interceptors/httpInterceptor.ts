@@ -1,10 +1,14 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
+import { HotToastService } from '@ngneat/hot-toast';
+import { inject } from '@angular/core';
 import { SpringErrorResponse } from '../types/api-error';
 
 export const httpInterceptor: HttpInterceptorFn = (req, next) =>
   next(req).pipe(
     catchError((httpError: HttpErrorResponse) => {
+      const toast = inject(HotToastService);
+
       let mensagem = 'Ocorreu um erro inesperado';
 
       if (httpError.error && typeof httpError.error === 'object') {
@@ -19,8 +23,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) =>
         mensagem = 'Sem conexão com o servidor';
       }
 
-      console.error(`[ERRO API]: ${mensagem}`);
-      // TODO: Adicionar toast
+      toast.error(mensagem);
 
       return throwError(() => httpError);
     }),

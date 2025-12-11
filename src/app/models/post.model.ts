@@ -2,7 +2,7 @@ import { Categoria } from './categoria.model';
 import { StatusPost } from './status.model';
 
 export interface Post {
-  id: number;
+  id: string;
   titulo: string;
   conteudo: string;
   autor: string;
