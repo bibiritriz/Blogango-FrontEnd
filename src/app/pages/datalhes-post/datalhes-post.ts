@@ -8,7 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { Post } from '../../models/post.model';
 import PostService from '../../services/post/post.service';
 import { ComentarioService } from '../../services/comentario/comentario.service';
-import { Comentario as tipoComentario, ComentarioUpdateDTO } from '../../models/comentario.model';
+import {
+  Comentario as tipoComentario,
+  ComentarioCreateDTO,
+  ComentarioUpdateDTO,
+} from '../../models/comentario.model';
 import { Comentario } from '../../components/shared/comentario/comentario';
 import { ConfirmModal } from '../../components/shared/confirm-modal/confirm-modal';
 import { ModalWraper } from '../../components/shared/modal-wraper/modal-wraper';
@@ -37,6 +41,8 @@ export class DatalhesPost implements OnInit {
   comentarioParaEditar: tipoComentario | null = null;
 
   comentarioParaExcluir: tipoComentario | null = null;
+
+  comentarioParaCriar: ComentarioCreateDTO | null = null;
 
   postParaExcluir: Post | null = null;
 
@@ -130,6 +136,30 @@ export class DatalhesPost implements OnInit {
       });
   }
 
+  criarComentario() {
+    if (!this.comentarioParaCriar) {
+      this.toast.error('Ocorreu um erro ao crriar comentário!');
+      return;
+    }
+
+    if (!this.comentarioParaCriar.conteudo.trim()) {
+      this.toast.error('O conteúdo do comentário é obrigatoório');
+    }
+
+    console.log(this.comentarioParaCriar);
+
+    this.comentarioService
+      .criarComentario(this.comentarioParaCriar)
+      .pipe(
+        this.toast.observe({
+          success: 'Comentário criado com sucesso! Aguardando validação',
+          error: 'Ocorreu um erro ao criar o comentário',
+          loading: 'Criando...',
+        }),
+      )
+      .subscribe();
+  }
+
   iniciarEdicao(comentario: tipoComentario) {
     this.comentarioParaEditar = { ...comentario };
   }
@@ -142,8 +172,20 @@ export class DatalhesPost implements OnInit {
     this.comentarioParaExcluir = comentario;
   }
 
+  iniciarCriacao() {
+    if (!this.postCorrente) return;
+
+    this.comentarioParaCriar = {
+      postId: this.postCorrente.id,
+      autor: '',
+      usuario: '',
+      conteudo: '',
+    };
+  }
+
   fecharModais() {
     this.comentarioParaEditar = null;
     this.comentarioParaExcluir = null;
+    this.postParaExcluir = null;
   }
 }

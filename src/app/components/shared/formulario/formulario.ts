@@ -54,7 +54,10 @@ export class FormularioPost implements OnInit {
       next: (resposta) => {
         this.TodasAscategorias = resposta;
       },
-      error: (err) => this.toast.error('Erro ao carregar categorias. Tente novamente mais tarde.'),
+      error: (err) => {
+        console.log(err);
+        this.toast.error('Erro ao carregar categorias. Tente novamente mais tarde.');
+      },
     });
 
     this.slugPost = this.route.snapshot.paramMap.get('slug');
@@ -164,7 +167,10 @@ export class FormularioPost implements OnInit {
             categorias: this.post.categorias,
           });
         },
-        error: (err) => this.toast.error('Erro ao carregar dados do post.'),
+        error: (err) => {
+          console.log(err);
+          this.toast.error('Erro ao carregar dados do post.');
+        },
       });
     }
   }
