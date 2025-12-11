@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from '../../components/shared/header/header';
+import { HeaderComponent } from '../../components/shared/header/header';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [Header, RouterOutlet],
+  imports: [HeaderComponent, RouterOutlet],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css',
 })
