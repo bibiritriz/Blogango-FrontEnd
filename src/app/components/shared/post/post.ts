@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './post.html',
   styleUrl: './post.css',
 })
-export class Post {}
+export class PostComponent {}
