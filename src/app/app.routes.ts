@@ -3,6 +3,7 @@ import { MainLayout } from './layout/main-layout/main-layout';
 import { ListaDePosts } from './pages/lista-de-posts/lista-de-posts';
 import { DatalhesPost } from './pages/datalhes-post/datalhes-post';
 import { Rascunho } from './pages/rascunho/rascunho';
+import { Comentarios } from './pages/comentarios/comentarios';
 // TODO: Adicinoar comopnentes respectivos
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
         path: 'rascunhos',
         title: 'Meus Rascunhos',
         component: Rascunho,
+      },
+      {
+        path: 'comentarios',
+        title: 'Gerenciar Comentários',
+        component: Comentarios,
       },
       /*
       {

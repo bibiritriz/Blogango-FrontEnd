@@ -32,19 +32,15 @@ export class Rascunho implements OnInit {
   }
 
   carregarPosts() {
-    if (this.tituloParaBusca.trim()) {
-      this.filtrarPosts(this.tituloParaBusca);
-    } else {
-      this.postService.buscarRascunhos(this.paginaAtual, 3).subscribe({
-        next: (page) => {
-          this.todosOsPosts = page.content;
-          this.postsExibidos = page.content;
-          this.totalDePaginas = page.totalPages;
-          this.isUltimaPagina = page.last;
-          this.isPrimeiraPagina = page.first;
-        },
-      });
-    }
+    this.postService.buscarRascunhos(this.paginaAtual, 3).subscribe({
+      next: (page) => {
+        this.todosOsPosts = page.content;
+        this.postsExibidos = page.content;
+        this.totalDePaginas = page.totalPages;
+        this.isUltimaPagina = page.last;
+        this.isPrimeiraPagina = page.first;
+      },
+    });
   }
 
   proximaPagina() {

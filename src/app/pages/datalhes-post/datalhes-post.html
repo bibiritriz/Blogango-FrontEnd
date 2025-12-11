@@ -1,17 +1,23 @@
-@if (!postCorrente){
+@if (!postCorrente) {
   <p>Carregando...</p>
 } @else {
   <article class="post-container flex flex-col gap-4">
     <header>
-      <h1 class="h1">{{postCorrente.titulo}}</h1>
+      <h1 class="h1">{{ postCorrente.titulo }}</h1>
 
       <div class="flex flex-row justify-between">
         <div class="meta-data overline">
           <p>
-            Criado em <time [attr.datetime]="postCorrente.dataCriacao">{{postCorrente.dataCriacao | date:'dd/MM/yyyy'}}</time>
+            Criado em
+            <time [attr.datetime]="postCorrente.dataCriacao">{{
+              postCorrente.dataCriacao | date: 'dd/MM/yyyy'
+            }}</time>
           </p>
           <p>
-            Atualizado em <time [attr.datetime]="postCorrente.dataAtualizacao">{{postCorrente.dataAtualizacao | date:'dd/MM/yyyy'}}</time>
+            Atualizado em
+            <time [attr.datetime]="postCorrente.dataAtualizacao">{{
+              postCorrente.dataAtualizacao | date: 'dd/MM/yyyy'
+            }}</time>
           </p>
         </div>
           <div class="flex flex-row gap-2" role="toolbar" aria-label="Ações do post">
@@ -31,27 +37,30 @@
       </div>
     </header>
 
-
     <ul class="lista-categorias" aria-label="Categorias" class="flex flex-row gap-2">
       @for (categoria of postCorrente.categorias; track $index){
         <li>
-          <span class="categoria disclaimer"  [style.background-color]="categoria.cor || '#00684A'">{{categoria.nome}}</span>
+          <span
+            class="categoria disclaimer"
+            [style.background-color]="categoria.cor || '#00684A'"
+            >{{ categoria.nome }}</span
+          >
         </li>
       }
     </ul>
 
     <section class="wrap-break-word">
-      {{postCorrente.conteudo}}
+      {{ postCorrente.conteudo }}
     </section>
 
     <footer class="post-stats flex flex-row gap-4">
       <div title="Visualizações" class="flex flex-row gap-1">
         <img src="svg/contadorVisualizacao.svg" alt="Ícone de olho" />
-        <span class="body-1">{{postCorrente.visualizacoes || 0}} visualizações</span>
+        <span class="body-1">{{ postCorrente.visualizacoes || 0 }} visualizações</span>
       </div>
       <div title="Comentários" class="flex flex-row gap-1">
         <img src="svg/contadorComentario.svg" alt="Ícone de balão de fala" />
-        <span class="body-1">{{postCorrente.numeroComentarios || 0}} comentários</span>
+        <span class="body-1">{{ postCorrente.numeroComentarios || 0 }} comentários</span>
       </div>
     </footer>
 
@@ -59,7 +68,7 @@
       Adicionar comentário
     </button>
 
-    @if(comentarios.length > 0){
+    @if (comentarios.length > 0) {
       <section id="comentarios" aria-labelledby="titulo-comentarios" class="flex flex-col gap-2">
         @for (comentario of comentarios; track $index) {
           <app-comentario (editar)="iniciarEdicao(comentario)" (excluir)="iniciarExclusao(comentario)"  [comentario]="comentario"></app-comentario>
@@ -71,12 +80,12 @@
              style="-webkit-mask-image: url('/svg/comentario.svg'); mask-image: url('/svg/comentario.svg'); mask-repeat: no-repeat; mask-position: center;">
         </div>
         <p class="text-gray-600 font-medium text-lg">Ainda não há comentários.</p>
-        <p class="text-gray-400 text-sm">Seja a primeira pessoa a compartilhar sua opinião sobre este post!</p>
+        <p class="text-gray-400 text-sm">
+          Seja a primeira pessoa a compartilhar sua opinião sobre este post!
+        </p>
       </div>
     }
-
   </article>
-
 }
 
 @if (comentarioParaExcluir) {

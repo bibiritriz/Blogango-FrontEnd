@@ -1,0 +1,75 @@
+.addCategoria{
+  background-color: var(--color-green-dark3);
+  border-radius: 30px;
+  display: flex;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.addCategoria:hover{
+  background-color: var(--color-green-dark2);
+}
+
+input, textarea{
+  border-color: var(--color-yellow-light2);
+  background-color: var(--color-yellow-light3);
+  padding: 10px;
+}
+
+.text-center{
+  display: flex;
+  align-items: center;
+}
+
+img{
+  width: 18px;
+  height: 18px;
+}
+
+button{
+  cursor: pointer;
+}
+
+.btn-categoria{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  padding: 5px;
+  min-width: 90px;
+  height: 30px;
+  border-radius: 16px;
+}
+
+.btn-cancelar, .btn-salvar, .btn-postar{
+  min-width: 90px;
+  height: 40px;
+  border-radius: 15px;
+}
+
+.btn-cancelar:hover{
+  background-color: var(--color-red-light1);
+}
+
+.btn-salvar:hover{
+  background-color: var(--color-blue-light1);
+}
+
+.btn-postar:hover{
+  background-color: var(--color-green-dark1);
+}
+
+.btn-cancelar{
+  background-color: var(--color-red-base);
+}
+
+.btn-salvar{
+  background-color: var(--color-blue-base);
+}
+
+.btn-postar{
+  background-color: var(--color-green-dark2);
+}
