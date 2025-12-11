@@ -1,0 +1,15 @@
+.items-navegacao{
+  background-color: var(--color-green-dark2);
+  color: var(--color-default-white);
+  min-width: 12.188rem;
+}
+a > div{
+  background-color: var(--color-default-white);
+}
+
+.item-activated{
+  color: var(--color-yellow-base);
+  div{
+    background-color: var(--color-yellow-base);
+  }
+}
