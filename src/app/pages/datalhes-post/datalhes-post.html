@@ -20,44 +20,25 @@
             }}</time>
           </p>
         </div>
-        <div class="flex flex-row gap-2" role="toolbar" aria-label="Ações do post">
-          <button
-            type="button"
-            class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-editar"
-          >
-            <div
-              class="w-5 h-5 pencilIcon"
-              style="
-                -webkit-mask-image: url('/svg/editPencil.svg');
-                mask-image: url('/svg/editPencil.svg');
-                mask-repeat: no-repeat;
-                mask-position: center;
-              "
-            ></div>
-            Editar
-          </button>
-          <button
-            (click)="excluirPost()"
-            type="button"
-            class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-excluir"
-          >
-            <div
-              class="w-5 h-5 trashIcon"
-              style="
-                -webkit-mask-image: url('/svg/trash.svg');
-                mask-image: url('/svg/trash.svg');
-                mask-repeat: no-repeat;
-                mask-position: center;
-              "
-            ></div>
-            Excluir
-          </button>
-        </div>
+          <div class="flex flex-row gap-2" role="toolbar" aria-label="Ações do post">
+            <button type="button" class= "flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-editar">
+              <div class="w-5 h-5 pencilIcon"
+                   style="-webkit-mask-image: url('/svg/editPencil.svg'); mask-image: url('/svg/editPencil.svg'); mask-repeat: no-repeat; mask-position: center;">
+              </div>
+              Editar
+            </button>
+            <button (click)="iniciarExclusaoPost(postCorrente)" type="button" class="flex flex-row gap-2 !px-2 py-0.5 rounded-2xl justify-center items-center botao-excluir">
+              <div class="w-5 h-5 trashIcon"
+                   style="-webkit-mask-image: url('/svg/trash.svg'); mask-image: url('/svg/trash.svg'); mask-repeat: no-repeat; mask-position: center;">
+              </div>
+              Excluir
+            </button>
+          </div>
       </div>
     </header>
 
     <ul class="lista-categorias" aria-label="Categorias" class="flex flex-row gap-2">
-      @for (categoria of postCorrente.categorias; track categoria.id) {
+      @for (categoria of postCorrente.categorias; track $index){
         <li>
           <span
             class="categoria disclaimer"
@@ -92,23 +73,15 @@
 
     @if (comentarios.length > 0) {
       <section id="comentarios" aria-labelledby="titulo-comentarios" class="flex flex-col gap-2">
-        @for (comentario of comentarios; track comentario.id) {
-          <app-comentario [comentario]="comentario"></app-comentario>
+        @for (comentario of comentarios; track $index) {
+          <app-comentario (editar)="iniciarEdicao(comentario)" (excluir)="iniciarExclusao(comentario)"  [comentario]="comentario"></app-comentario>
         }
       </section>
     } @else {
-      <div
-        class="flex flex-col items-center justify-center py-10 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 text-center"
-      >
-        <div
-          class="w-12 h-12 bg-gray-300 mb-2"
-          style="
-            -webkit-mask-image: url('/svg/contadorComentario.svg');
-            mask-image: url('/svg/contadorComentario.svg');
-            mask-repeat: no-repeat;
-            mask-position: center;
-          "
-        ></div>
+      <div class="flex flex-col items-center justify-center py-10 bg-gray-50 rounded-lg border-2 border-dashed border-gray-200 text-center">
+        <div class="w-12 h-12 bg-gray-300 mb-2"
+             style="-webkit-mask-image: url('/svg/comentario.svg'); mask-image: url('/svg/comentario.svg'); mask-repeat: no-repeat; mask-position: center;">
+        </div>
         <p class="text-gray-600 font-medium text-lg">Ainda não há comentários.</p>
         <p class="text-gray-400 text-sm">
           Seja a primeira pessoa a compartilhar sua opinião sobre este post!
@@ -116,4 +89,58 @@
       </div>
     }
   </article>
+}
+
+@if (comentarioParaExcluir) {
+  <app-confirm-modal
+    titulo="Confirmar Exclusão"
+    mensagem="A exclusão desse comentário não poderá ser desfeita."
+    (cancelar)="comentarioParaExcluir = null"
+    (confirmar)="deletarComentario()">
+  </app-confirm-modal>
+}
+
+@if (comentarioParaEditar) {
+  <app-modal-wraper titulo="Editar Comentário" (fechar)="comentarioParaEditar = null">
+
+    <form (submit)="salvarEdicao()" class="flex flex-col gap-4">
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="font-bold text-sm">Autor</label>
+            <input [value]="comentarioParaEditar.autor" disabled class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200">
+          </div>
+          <div>
+            <label class="font-bold text-sm">Usuário</label>
+            <input [value]="comentarioParaEditar.usuario" disabled class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200">
+          </div>
+        </div>
+
+        <div>
+          <label class="font-bold text-sm">Conteúdo</label>
+          <textarea [(ngModel)]="comentarioParaEditar.conteudo" name="conteudo"
+                    class="w-full bg-yellow-100/50 !p-2 rounded border border-yellow-200 h-24"></textarea>
+        </div>
+
+      <div class="flex justify-end gap-3 !pt-4 mt-2">
+        <button type="button" (click)="comentarioParaEditar = null" class="bg-red-600 text-white !px-6 !py-2 rounded-lg font-bold">
+          Cancelar
+        </button>
+        <button type="submit" class="bg-blue-600 text-white !px-6 !py-2 rounded-lg font-bold">
+          Salvar
+        </button>
+      </div>
+
+    </form>
+
+  </app-modal-wraper>
+}
+
+@if (postParaExcluir){
+  <app-confirm-modal
+    titulo="Confirmar Exclusão"
+    mensagem="A exclusão desse post não poderá ser desfeita."
+    (cancelar)="postParaExcluir = null"
+    (confirmar)="deletarPost()">
+  </app-confirm-modal>
 }

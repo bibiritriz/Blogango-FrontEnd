@@ -12,13 +12,13 @@
     </div>
 
     <nav aria-label="Opções do comentário">
-      <button type="button" aria-label="Editar comentário">
+      <button type="button" aria-label="Editar comentário" (click)="editar.emit()">
         <span class="pencilIcon"
               style="-webkit-mask-image: url('/svg/editPencil.svg'); mask-image: url('/svg/editPencil.svg'); mask-repeat: no-repeat; mask-position: center; display: inline-block;">
         </span>
       </button>
 
-      <button type="button" aria-label="Excluir comentário">
+      <button type="button" aria-label="Excluir comentário" (click)="excluir.emit()">
         <span class="trashIcon"
               style="-webkit-mask-image: url('/svg/trash.svg'); mask-image: url('/svg/trash.svg'); mask-repeat: no-repeat; mask-position: center; display: inline-block;">
         </span>

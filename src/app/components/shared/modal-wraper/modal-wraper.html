@@ -1,0 +1,23 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm !p-4"
+     role="dialog" aria-modal="true">
+
+  <div class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-fade-in">
+
+    <header class="relative header-modal text-white !p-4 flex items-center justify-center">
+
+      <h2 class="text-lg font-bold">{{ titulo }}</h2>
+
+      <button (click)="fechar.emit()" class="absolute right-4 text-white hover:text-gray-300 flex items-center justify-center">
+        <div class="w-4 h-4 bg-current"
+             style="-webkit-mask-image: url('/svg/close.svg'); mask-image: url('/svg/close.svg'); mask-repeat: no-repeat; mask-position: center;">
+        </div>
+      </button>
+
+    </header>
+
+    <div class="!p-4">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>

@@ -158,7 +158,6 @@ body {
   font-size: 0.6875rem;
   text-decoration: none;
   letter-spacing: 0.4px;
-  text-transform: uppercase;
 }
 
 /* Disclaimer */
@@ -172,6 +171,7 @@ body {
 .categoria{
   display: flex;
   justify-content: center;
+  padding: var(--spacing-1) var(--spacing-2);
   gap: 10px;
   min-width: 85px;
   height: 18px;
