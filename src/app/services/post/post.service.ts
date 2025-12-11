@@ -65,6 +65,20 @@ export default class PostService {
     return this.http.get<Page<Post>>(`${this.url}/buscar`, { params });
   }
 
+  public buscarRascunhos(
+    page: number = 0,
+    size: number = 10,
+    sort: string = 'dataCriacao,desc',
+  ): Observable<Page<Post>> {
+    let params = new HttpParams();
+
+    params = params.append('page', page.toString());
+    params = params.append('size', size.toString());
+    params = params.append('sort', sort);
+
+    return this.http.get<Page<Post>>(`${this.url}/status/rascunho`, { params });
+  }
+
   public criarPost(post: PostCreateDTO): Observable<string> {
     return this.http.post<string>(this.url, post);
   }
