@@ -54,7 +54,6 @@ export class FormularioPost implements OnInit {
       next: (resposta) => {
         this.TodasAscategorias = resposta;
       },
-      error: (err) => this.toast.error('Erro ao carregar categorias. Tente novamente mais tarde.'),
     });
 
     this.slugPost = this.route.snapshot.paramMap.get('slug');
@@ -107,7 +106,7 @@ export class FormularioPost implements OnInit {
   processarEnvio(statusDoPost: StatusPost) {
     const dadosDoFormulario = this.formulario.getRawValue();
     if (this.formulario.valid) {
-      if (this.isEdicao) {
+      if (this.isEdicao && this.post?.id) {
         const postAtualizado: PostUpdateDTO = {
           titulo: dadosDoFormulario.titulo as string,
           conteudo: dadosDoFormulario.conteudo as string,
@@ -116,7 +115,7 @@ export class FormularioPost implements OnInit {
           status: statusDoPost,
         };
         this.postService
-          .atualizarPost(postAtualizado)
+          .atualizarPost(this.post.id, postAtualizado)
           .pipe(this.toast.observe({ success: 'Post atualizado!' }))
           .subscribe({
             next: () => {
@@ -164,7 +163,6 @@ export class FormularioPost implements OnInit {
             categorias: this.post.categorias,
           });
         },
-        error: (err) => this.toast.error('Erro ao carregar dados do post.'),
       });
     }
   }
